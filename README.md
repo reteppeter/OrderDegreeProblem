@@ -1,4 +1,4 @@
-As a part of a parallel computing unit, we were required to implement a paper of our choice related to OpenMP or MPI.
+As a part of a parallel computing unit undertaken in 2021, we were required to implement a paper of our choice related to OpenMP or MPI.
 
 The repository contains a breadth first search and 
 simulated annealing based algorithm for solving the order/degree problem.
