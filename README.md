@@ -4,16 +4,25 @@ The repository contains a breadth first search and
 simulated annealing based algorithm for solving the order/degree problem.
 Both OpenMP and MPI are required.
 
+Running the program will take an input graph, and produce a new augmented graph with improved average shortest path length (ASPL).
+
+## Originating Paper
+This code implements, and is based on pseudo code from, the paper:
+"A Method for Order/Degree Problem Based on Graph Symmetry and Simulated 
+Annealing with MPI/OpenMP Parallelization"
+Available at, as of 2022:
+https://dl.acm.org/doi/pdf/10.1145/3293320.3293325
+
 ## How to use
 To build the program, run `make`, which requires `mpicxx`, and must have support for C++20.
 
 To run on Windows, do:
 ```
-mpiexec -n X ./main [graph file] -t Y
+mpiexec -n X ./solver [graph file] -t Y
 ```
 And on Linux:
 ```
-mpirun -np X ./main [graph file] -t Y
+mpirun -np X ./solver [graph file] -t Y
 ```
 Where X is the number of processes, Y is the number of threads, and [graph file] is the path to the file defining the graphs as an adjacency list. An example is given as `smallGraphBad.txt`.
 
@@ -22,7 +31,7 @@ Warning: X (the number of processes) must be less than or equal to the number of
 ## Example Output
 ### Console output
 ```
-\> mpiexec -n 8 ./main .\largeGraphBad.txt -t 5
+\> mpiexec -n 8 ./solver .\examples\largeGraphBad.txt -t 5
 Process 6 will check from 192 to 223.
 Process 5 will check from 160 to 191.
 Process 3 will check from 96 to 127.
@@ -36,10 +45,3 @@ Final minimum ASPL was 2.820113, and the diameter of this graph was 5.
 ```
 ### File output
 For the input graph file, a new augmented graph file will be produced, with the same name bu the extension `.res.txt`.
-
-## Originating Paper
-This code implements, and is based on pseudo code from, the paper:
-"A Method for Order/Degree Problem Based on Graph Symmetry and Simulated 
-Annealing with MPI/OpenMP Parallelization"
-Available at, as of 2022:
-https://dl.acm.org/doi/pdf/10.1145/3293320.3293325
